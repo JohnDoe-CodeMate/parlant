@@ -20,7 +20,7 @@ from typing import Any, Awaitable, Callable, Iterable, Mapping, Protocol, TypeAl
 
 import mimetypes
 
-from fastapi import APIRouter, FastAPI, HTTPException, Request, Response, status
+from fastapi import FastAPI, HTTPException, Request, Response, status
 from fastapi.responses import JSONResponse, RedirectResponse
 from fastapi import routing as fastapi_routing
 from fastapi.routing import APIRoute
@@ -398,18 +398,12 @@ async def create_api_app(
             return {**snapshot, "diagnostic_reports": report_links}
         return snapshot
 
-    agent_router = APIRouter(prefix="/agents")
-
     api_app.include_router(
         router=agents.create_router(
             policy=authorization_policy,
             app=application,
         ),
         prefix="/agents",
-    )
-
-    api_app.include_router(
-        router=agent_router,
     )
 
     api_app.include_router(
