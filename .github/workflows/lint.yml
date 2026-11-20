@@ -37,5 +37,5 @@ jobs:
         continue-on-error: false
 
       - name: Lint packages
-        run: python scripts/lint.py
+        run: python scripts/lint.py --mypy --ruff
         continue-on-error: false
