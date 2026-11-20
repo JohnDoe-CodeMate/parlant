@@ -13,7 +13,7 @@ To sign off your commits:
 2. If you've configured git to use our hooks (`.githooks`), you are now ready. Otherwise, either:
    1. use our `.githooks`:
       ```
-      git config set core.hookspath .githooks
+      git config core.hooksPath .githooks
       ```
       **OR**  
    2. Add the `-s` flag when committing:
